@@ -12,7 +12,7 @@ class NoteActivity : AppCompatActivity() {
 
         val saveNoteButton = findViewById<Button>(R.id.saveNoteButton)
         saveNoteButton.setOnClickListener {
-            // Получаем значения из полей
+            // Получаем значения
             val title = titleEditText.text.toString()
             val tags = tagsEditText.text.toString()
             val noteText = noteEditText.text.toString()
