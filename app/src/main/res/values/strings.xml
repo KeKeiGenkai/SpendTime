@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SpentTime</string>
+    <string name="title_activity_create_task">CreateTask</string>
+</resources>
