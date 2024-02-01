@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -10,21 +10,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Title"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/tagsEditText"
+    <ChipGroup
+        android:id="@+id/tagsChipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleEditText"
         android:layout_marginTop="16dp"
-        android:hint="Tags" />
+        app:singleSelection="true">
+
+        <!-- Пример тега (Chip) -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tagUseful"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="useful" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tagUseless"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="useless" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tagImportant"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="important" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tagNeed"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="needful" />
+
+        <!-- Добавьте нужное количество тегов -->
+
+    </ChipGroup>
 
     <EditText
         android:id="@+id/noteEditText"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_below="@+id/tagsEditText"
+        android:layout_below="@+id/tagsChipGroup"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:gravity="top"
