@@ -1,7 +1,9 @@
 package com.kkg.spenttime
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kkg.spenttime.databinding.ItemNoteBinding
 
@@ -33,6 +35,16 @@ class NoteAdapter : RecyclerView.Adapter<NoteViewHolder>() {
 
     fun updateData(newNotes: List<Note>) {
         notes.clear()
+        notes.addAll(newNotes)
+        notifyDataSetChanged()
+    }
+
+    fun clearNotes() {
+        notes.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addAllNotes(newNotes: List<Note>) {
         notes.addAll(newNotes)
         notifyDataSetChanged()
     }

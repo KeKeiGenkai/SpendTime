@@ -4,15 +4,13 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Элемент для ввода заголовка -->
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Title"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
-    <!-- ChipGroup для выбора тегов -->
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/tagsChipGroup"
         android:layout_width="match_parent"
@@ -21,7 +19,6 @@
         android:layout_marginTop="16dp"
         app:singleSelection="false">
 
-        <!-- Теги (Chip) могут быть добавлены здесь -->
         <com.google.android.material.chip.Chip
             android:id="@+id/tagNecessary"
             style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -52,7 +49,6 @@
     </com.google.android.material.chip.ChipGroup>
 
 
-    <!-- Элемент для ввода текста заметки -->
     <EditText
         android:id="@+id/noteEditText"
         android:layout_width="match_parent"
@@ -65,7 +61,6 @@
         android:inputType="textMultiLine"
         android:minLines="5" />
 
-    <!-- Кнопка для сохранения заметки -->
     <Button
         android:id="@+id/saveNoteButton"
         android:layout_width="wrap_content"

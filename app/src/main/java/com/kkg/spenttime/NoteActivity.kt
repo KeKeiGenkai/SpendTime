@@ -2,15 +2,12 @@ package com.kkg.spenttime
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.kkg.spenttime.databinding.ActivityNoteBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.kkg.spenttime.databinding.ActivityNoteBinding
-import kotlinx.android.synthetic.main.activity_note.*
-import kotlinx.android.synthetic.main.activity_note.view.*
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.reflect.Type
 
 class NoteActivity : AppCompatActivity() {
@@ -28,10 +25,9 @@ class NoteActivity : AppCompatActivity() {
     }
 
     private fun saveNote() {
-        val title = titleEditText.text.toString()
-        val content = noteEditText.text.toString()
+        val title = binding.titleEditText.text.toString()
+        val content = binding.noteEditText.text.toString()
 
-        // Получение выбранных тегов
         val chipGroup: ChipGroup = findViewById(R.id.tagsChipGroup)
         val selectedTags = mutableListOf<String>()
 
@@ -42,21 +38,18 @@ class NoteActivity : AppCompatActivity() {
             }
         }
 
-        // Создание объекта заметки
         val note = Note(title, selectedTags.joinToString(", "), content)
 
-        // Сохранение заметки в SharedPreferences
         saveNoteToSharedPreferences(note)
 
-        // Завершение активности
         finish()
     }
+
     private fun saveNoteToSharedPreferences(note: Note) {
         val sharedPreferences: SharedPreferences =
             getSharedPreferences("notes_prefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-        // Получаем текущий список заметок
         val currentNotesString = sharedPreferences.getString("notes", null)
         val currentNotesType: Type = object : TypeToken<List<Note>>() {}.type
         val currentNotes: MutableList<Note> = if (currentNotesString != null) {
@@ -65,10 +58,8 @@ class NoteActivity : AppCompatActivity() {
             mutableListOf()
         }
 
-        // Добавляем новую заметку
         currentNotes.add(note)
 
-        // Сохраняем обновленный список заметок
         val updatedNotesString = Gson().toJson(currentNotes)
         editor.putString("notes", updatedNotesString)
         editor.apply()
